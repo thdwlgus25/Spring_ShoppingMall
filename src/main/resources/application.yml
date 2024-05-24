@@ -23,7 +23,7 @@ spring:
     properties:
       hibernate:
         format_sql: true # sql? ?? ? ??? ???? ???
-    database-platform: org.hibernate.dialect.MYSQL8Dialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
 
 # Log Setting
 logging:
