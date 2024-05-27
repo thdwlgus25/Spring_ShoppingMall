@@ -13,7 +13,7 @@ import java.awt.*;
 public class HelloController {
 
 //   옛날 방식? @RequestMapping(value = "/", method = RequestMethod.GET)
-    @GetMapping("/")
+    @GetMapping("/hello")
     public UserDto hello() {
         UserDto userDto = UserDto.builder().name("김길동").age(10).build();
         userDto.setAge(20);
