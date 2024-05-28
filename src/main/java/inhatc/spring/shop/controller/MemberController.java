@@ -3,10 +3,15 @@ package inhatc.spring.shop.controller;
 import inhatc.spring.shop.dto.MemberFormDto;
 import inhatc.spring.shop.entity.Member;
 import inhatc.spring.shop.service.MemberService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -48,6 +53,15 @@ public class MemberController {
 
     @GetMapping("/member/login")
     public String loginForm() {
-        return "/member/memberLoginForm";
+        return "member/memberLoginForm";
+    }
+
+    @GetMapping("/member/logout")
+    public String logoutForm(HttpServletRequest request, HttpServletResponse response) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // 스프링 시큐리티 안에 있는 인증 정보를 넘겨줌
+        if(authentication != null) {
+            new SecurityContextLogoutHandler().logout(request, response, authentication);
+        }
+        return "redirect:/";
     }
 }
