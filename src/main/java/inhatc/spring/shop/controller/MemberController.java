@@ -4,6 +4,7 @@ import inhatc.spring.shop.dto.MemberFormDto;
 import inhatc.spring.shop.entity.Member;
 import inhatc.spring.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class MemberController {
 
     private final MemberService memberService;
@@ -24,13 +26,15 @@ public class MemberController {
         return "member/memberForm";
     }
 
-//    @PostMapping("/member/new")
-//    public String insertMember(MemberFormDto memberFormDto, Model model) {
-//
-//        Member member = Member.createMember(memberFormDto, passwordEncoder);
-//        Member m = memberService.saveMember(member);
-//
-//
-//        return "";
-//    }
+    @PostMapping("/member/new")
+    public String insertMember(MemberFormDto memberFormDto) {
+
+        log.info("----> memberFormDto" + memberFormDto);
+
+        // 암호화 까지 된 member
+        Member member = Member.createMember(memberFormDto, passwordEncoder);
+        memberService.saveMember(member);
+
+        return "redirect:/";
+    }
 }
