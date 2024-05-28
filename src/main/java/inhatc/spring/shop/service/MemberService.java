@@ -51,7 +51,7 @@ public class MemberService implements UserDetailsService {
 
         // 이 3가지가 무조건 필요함 (이름(아이디), 비번, 역할)
         return User.builder()
-                .username(member.getEmail()) // 우리는 이메일을 이름 대신 쓰고 있음.
+                .username(member.getEmail()) // 우리는 이메일을 이름 대신 쓰고 있음.(username은 회원 아이디를 말함)
                 .password(member.getPassword())
                 .roles(member.getRole().toString())
                 .build();
