@@ -29,8 +29,12 @@ public class SecurityConfig {
         http.authorizeHttpRequests(request -> request
                 .requestMatchers("/css/**").permitAll()
                 .requestMatchers("/", "/member/**").permitAll()
+                .requestMatchers("/admin/**").hasRole("ADMIN") // admin 권한을 가진 사람만 접근 가능
                 .anyRequest().authenticated() // 나머지는 인증을 부여
         );
+
+        http.exceptionHandling(exception -> exception
+                .authenticationEntryPoint((new CustomAuthenticationEntryPont())));
         
         return http.build();
     }
