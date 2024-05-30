@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "orders") // DB 테이블은 orders로 만드는 것
@@ -29,5 +31,8 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+    private List<OrderItem> orderItems = new ArrayList<>();
 
 }
