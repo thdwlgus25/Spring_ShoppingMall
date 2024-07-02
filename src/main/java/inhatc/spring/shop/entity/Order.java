@@ -32,7 +32,7 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems = new ArrayList<>();
 
 }
