@@ -42,8 +42,6 @@ class ItemRepositoryTest {
                     .stockNumber(100 + i)
                     .itemDetail("테스트 상품 상세 설명" + i)
                     .itemSellStatus(ItemSellStatus.SELL)
-                    .registerTime(LocalDateTime.now())
-                    .updateTime(LocalDateTime.now())
                     .build(); // 기본 생성자 만든거랑 똑같음
 
             itemRepository.save(item);
@@ -58,8 +56,6 @@ class ItemRepositoryTest {
                     .stockNumber(100 + i)
                     .itemDetail("테스트 상품 상세 설명" + i)
                     .itemSellStatus(ItemSellStatus.SELL)
-                    .registerTime(LocalDateTime.now())
-                    .updateTime(LocalDateTime.now())
                     .build(); // 기본 생성자 만든거랑 똑같음
 
             itemRepository.save(item);
@@ -71,8 +67,6 @@ class ItemRepositoryTest {
                     .stockNumber(100 + i)
                     .itemDetail("테스트 상품 상세 설명" + i)
                     .itemSellStatus(ItemSellStatus.SOLD_OUT)
-                    .registerTime(LocalDateTime.now())
-                    .updateTime(LocalDateTime.now())
                     .build(); // 기본 생성자 만든거랑 똑같음
 
             itemRepository.save(item);
@@ -183,8 +177,6 @@ class ItemRepositoryTest {
                 .stockNumber(100)
                 .itemDetail("테스트 상품 상세 설명")
                 .itemSellStatus(ItemSellStatus.SELL)
-                .registerTime(LocalDateTime.now())
-                .updateTime(LocalDateTime.now())
                 .build(); // 기본 생성자 만든거랑 똑같음
 
         System.out.println("item : " + item);
