@@ -41,6 +41,14 @@ spring:
       name: test@test.com
       password: 1111
 
+  # file
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+itemImgLocation: C:/shopimg/img
+uploadPath: file:///C:/shopimg
+
 # Log Setting
 logging:
   level:
