@@ -100,6 +100,7 @@
         </div>
         <p th:if="${#fields.hasErrors('itemDetail')}" th:errors="*{itemDetail}" class="fieldError">Incorrect data</p>
 
+        <!--이미지가 비어있는 경우라면-->
         <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
             <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">
                 <div class="custom-file img-div">
@@ -122,6 +123,7 @@
         <div th:if="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
             <button th:formaction="@{/admin/item/new}" type="submit" class="btn btn-primary">저장</button>
         </div>
+        <!--값이 채워진 경우라면-->
         <div th:unless="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
             <button th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit" class="btn btn-primary">수정</button>
         </div>
